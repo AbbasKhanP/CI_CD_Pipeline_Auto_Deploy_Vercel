@@ -21,10 +21,11 @@ pipeline {
                 bat 'npm run build'
             }
         }
-        stage('Deploy') {
-            steps {
-                bat 'npx vercel --prod --yes --token=%VERCEL_TOKEN%'
-            }
-        }
+      stage('Deploy') {
+    steps {
+        bat 'npx vercel --prod --yes --token=%VERCEL_TOKEN% --name=aqsa-nextjs'
+    }
+}
+
     }
 }
