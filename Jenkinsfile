@@ -1,28 +1,31 @@
-pipeline{
+pipeline {
     agent any
-    environment{
-        VERCEL_TOKEN = credentials ('vercel_token')
+
+    environment {
+        VERCEL_TOKEN = credentials('vercel_token')
     }
-    stages{
-        stage('Install'){
-            steps{
+
+    stages {
+        stage('Install') {
+            steps {
                 bat 'npm install'
             }
         }
-        stage('Testing'){
-            steps{
-                echo 'skipping the testing'
+        stage('Test') {
+            steps {
+                echo 'Skipping tests - no test script found'
             }
         }
-        stage('Building'){
-            steps{
+        stage('Build') {
+            steps {
                 bat 'npm run build'
             }
         }
-        stage('Deploy'){
-            steps{
-                bat 'npm vercel --prod --yes --token=%VERCEL_TOKEN%'
-            }
-        }
+      stage('Deploy') {
+    steps {
+        bat 'npx vercel --prod --yes --token=%VERCEL_TOKEN% --name=aqsa-nextjs'
+    }
+}
+
     }
 }
