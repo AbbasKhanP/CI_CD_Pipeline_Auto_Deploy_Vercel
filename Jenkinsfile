@@ -21,7 +21,8 @@ pipeline{
         }
         stage('deploy'){
             steps{
-                bat 'npx vercel --prod --yes --token=%VERCEL_TOKEN%'
+                bat 'npx vercel --prod --yes --token=%VERCEL_TOKEN% --name=my-cicd'
+
             }
         }
     }
