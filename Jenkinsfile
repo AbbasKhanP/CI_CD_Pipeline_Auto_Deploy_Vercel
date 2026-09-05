@@ -4,23 +4,23 @@ pipeline{
         VERCEL_TOKEN = crecentrails ('vercel_token')
     }
     stages{
-        stage{
-            steps('Install'){
+        stage('Install'){
+            steps{
                 bat 'npm install'
             }
         }
-        stage{
-            steps('Testing'){
+        stage('Testing'){
+            steps{
                 echo 'skipping the testing'
             }
         }
-        stage{
-            steps('Building'){
+        stage('Building'){
+            steps{
                 bat 'npm run build'
             }
         }
-        stage{
-            steps('Deploy'){
+        stage('Deploy'){
+            steps{
                 bat 'npm vercel --prod --yes --token=%VERCEL_TOKEN%'
             }
         }
